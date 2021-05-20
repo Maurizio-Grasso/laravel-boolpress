@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 use App\Post;
 
 class PostSeeder extends Seeder
@@ -17,7 +18,23 @@ class PostSeeder extends Seeder
             $new_post = new Post();
             $new_post->title   = $faker->sentence(rand(2,6));
             $new_post->content = $faker->text(rand(300,800));
-            $new_post->slug    = Str::slug($new_post->title , '-');
+
+            $slug = Str::slug($new_post->title , '-');
+            $new_post->slug = $slug;  
+            $slub_base = $slug;
+
+            $post_presente = Post::where('slug' , $slug)->first();
+
+            $contatore = 1;
+
+            while($post_presente) {
+                $slug = $slub_base . '-' . $contatore;
+                $contatore++;
+            }
+
+            $new_post->slug = $slug;
+            $new_post->user_id = 1;
+
             $new_post->save();
         }
     }

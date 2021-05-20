@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('guest-home');
+Route::get('/posts' , 'PostController@index')->name('posts.index');
+Route::get('/posts/{slug}' , 'PostController@show')->name('posts.show');
+
 
 Auth::routes();
-
 
 Route::prefix('admin')
     ->namespace('Admin')
