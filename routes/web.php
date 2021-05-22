@@ -30,4 +30,13 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('admin-home');
+        Route::resource('/posts' , PostController::class)->names([
+            'index'     => 'admin.posts.index' ,
+            'create'    => 'admin.posts.create' ,
+            'destroy'   => 'admin.posts.destroy' ,
+            'show'      => 'admin.posts.show' ,
+            'update'    => 'admin.posts.update' ,
+            'edit'      => 'admin.posts.edit' ,
+            'store'      => 'admin.posts.store' ,
+        ]);
     });
