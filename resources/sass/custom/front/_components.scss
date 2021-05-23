@@ -1,0 +1,220 @@
+// Post Grid
+
+.post-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.single-post {
+    flex: 0 0 calc((100% - 1rem ) / 2);
+    position: relative;
+    min-height: 20rem;
+    margin-bottom: 1rem;
+    border-radius: .3rem;
+    overflow: hidden;
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 2;
+        opacity: .5;
+        transition: opacity .5s;
+    }
+
+    &:hover img {
+        opacity: 1;
+    }
+
+    &__title {
+        position: absolute;
+        font-size: 2.2rem;
+        bottom: 1rem;
+        left: 1rem;
+        width: calc(100% - 2 * 1rem);
+        z-index: 3;
+        background-color: $color-white;
+        color: $primary-color;
+        padding: 1rem;
+
+        a {
+            &:link,
+            &:active,
+            &:visited {
+                text-decoration: none;
+                color: $primary-color-light;
+            }
+            &:hover ,
+            &:active {
+                color: $primary-color;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__button {
+
+        width: 5rem;
+        height: 5rem;
+
+        background-color: $color-white;
+        border-radius: 50%;
+        color: $primary-color;
+        text-align: center;
+        line-height: 5rem;
+        border: none;
+        font-size: 2rem;
+        z-index: 3;
+        cursor: pointer;
+
+        &--edit {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        &--delete {
+            position: absolute;
+            top: calc(1rem * 2 + 5rem);
+            right: 1rem;
+            
+        }
+    }
+}
+
+// Post Heading
+
+.post-heading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+
+    &__image {
+        flex: 0 0 40%;
+        width: 100%;
+        margin-right: 5%;
+    }
+    &__title {
+        flex: 0 0 40%;
+        font-size: 5rem;
+        line-height: 7rem;
+    }
+}
+
+// Archive Heading
+
+.archive-heading {
+
+    height: $section-height-small;
+    margin-bottom: 3rem;
+    
+    &__title {
+        line-height: $section-height-small;
+        font-size: 3rem;
+    }
+}
+
+// Buttons
+
+.my-btn {
+    text-align: center;
+    border-radius: .5rem;
+    transition: all .3s;
+    display: inline-block;
+    line-height: normal;
+    
+    &--primary{
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+        color: $color-white;
+
+        &:link,
+        &:visited,
+        &:active,
+        &:hover {
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        &:hover {
+            background-color: $color-white;
+            color: $primary-color;
+        }
+    }
+
+    &--green{
+        background-color: $green;
+        border: 1px solid $green;
+        color: $color-white;
+
+        &:link,
+        &:visited,
+        &:active,
+        &:hover {
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        &:hover {
+            background-color: $color-white;
+            color: $green;
+        }
+    }
+
+    &--red{
+        background-color: $red;
+        border: 1px solid $red;
+        color: $color-white;
+
+        
+        &:link,
+        &:visited,
+        &:active,
+        &:hover {
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        &:hover {
+            background-color: $color-white;
+            color: $red;
+        }
+    }
+
+    &--orange{
+        background-color: $orange;
+        border: 1px solid $orange;
+        color: $color-white;
+
+        
+        &:link,
+        &:visited,
+        &:active,
+        &:hover {
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        &:hover {
+            background-color: $color-white;
+            color: $orange;
+        }
+    }
+
+    &--medium {
+        min-width: 15rem;
+        padding: 1rem 2rem;
+
+    }
+    &--small {
+        padding: .5rem 1rem;
+    }
+}

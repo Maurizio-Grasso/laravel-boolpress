@@ -1,0 +1,44 @@
+.header--front {
+
+    height: $section-height-medium;
+
+    margin-bottom: .5rem;
+    padding: 1rem;
+    color: $color-white;
+
+    background-color: $primary-color;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    
+    &__site-name {
+        font-family: 'Raleway', sans-serif;
+        height: calc(#{$section-height-medium} - 2 * 1rem); // = 100% - padding
+        line-height: calc(#{$section-height-medium} - 2 * 1rem); // = 100% - padding
+        font-size: 3.5rem;
+        letter-spacing: .5rem;
+        text-transform: uppercase;
+        
+        a {
+            &:hover,
+            &:visited,
+            &:link,
+            &:active {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+    
+    &__text-lighter {
+        font-weight: 300;
+    }
+    
+    &__text-bolder {
+        font-weight: 700;
+    }
+
+}

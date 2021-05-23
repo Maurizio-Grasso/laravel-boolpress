@@ -1,0 +1,138 @@
+.sidebar-front {
+    height: 100%;
+    width: calc(100% - .5rem);
+    margin-left: .5rem;
+    padding: 1rem;
+    background-color: $color-white;
+}
+
+.sidebar-widget {
+    margin-bottom: 3rem;
+
+    &__heading {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+// Widget AD
+
+.sidebar-widget--ad{
+
+    cursor: pointer;
+
+    &__image {
+        max-width: 100%;
+    }
+}
+
+// Widget Search
+
+.sidebar-widget--search {
+
+    background-color: $color-white;
+    height: 5rem;
+    border: 1px solid $primary-color;
+    
+    
+    &__input {
+        line-height: 5rem;
+        background-color: transparent;
+        width: calc(100% - 5rem);
+        display: block;
+        float: left;
+        border: none;
+        outline: none;
+        padding-left: 2rem;
+    }
+
+    &__button {
+        display: block;
+        outline: none;
+
+        height: 100%;
+        float: left;
+        width: 5rem;
+        background-color: $primary-color;
+        color: $color-white;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+// Widget Social Share
+
+
+.sidebar-social-icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    
+}
+
+.sidebar-social-icon {
+    flex: 0 0 calc(100% / 4);
+    height: 5rem;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;        
+    }
+    
+    i {
+        color: $color-white;
+        line-height: 5rem;
+
+    }
+
+    &--facebook {
+        background-color: #395693;
+    }
+
+    &--whatsapp {
+        background-color: #22c15d;
+    }
+
+    &--twitter {
+        background-color: #1a93dd;
+    }
+
+    &--pinterest {
+        background-color: #aa0719;
+    }
+
+    &:not(:last-child) {
+        border-right: 1px solid $color-white;
+    }
+
+}
+
+// Widget Admin
+
+.sidebar-widget--users {
+
+    ul {
+        list-style-type: none ;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.sidebar-user-nav {
+    
+    margin-top: 1rem;
+    
+    &__list-item {
+
+        height: 3rem;
+        line-height: 3rem;
+
+        &--large {
+            height: 5rem;
+           line-height: 5rem;
+        }
+    }
+}

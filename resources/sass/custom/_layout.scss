@@ -1,0 +1,33 @@
+:root {
+    font-size: 62.5%;
+}
+
+.body {
+    font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.outer-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0;
+
+        .row {
+            flex: 0 0 auto;
+        }
+
+        .page-content {
+            flex: 1 0 auto;
+        }
+}
+
+.main {
+    padding: 1rem;
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+}

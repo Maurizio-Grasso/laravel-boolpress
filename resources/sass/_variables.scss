@@ -3,8 +3,8 @@ $body-bg: #f8fafc;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
 
 // Colors
 $blue: #3490dc;
@@ -17,3 +17,42 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+$primary-color : rgb(11, 76, 150);
+$primary-color-light : lighten($primary-color , 20%);
+$primary-color-dark : darken($primary-color , 20%);
+
+$primary-color-back : rgb(9, 88, 52);
+$secondary-color-back : rgb(104, 43, 202);
+
+$color-white : #fff;
+
+$color-gray-light: rgb(204, 204, 204);
+
+$color-text: rgb(53, 53, 53);
+
+$section-height-small: 5rem;
+$section-height-medium: 8rem;
+
+// mixins 
+
+@mixin notification($value) {
+    
+    &::after {
+        box-sizing: border-box;
+        content: $value;
+        display: inline-block;
+        margin-left: 1rem;
+        background-color: $red;
+
+        height: 2.5rem;
+        width: 2.5rem;
+        line-height: 2.5rem;
+
+        border-radius: 50%;
+        text-align: center;
+
+        font-size: 70%;
+        font-weight: bolder;
+    }
+}

@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('guest-home');
+Route::get('/', 'HomeController@index')->name('guest-home');                // Home Page redirects to blog index
 
-Route::get('/posts' , 'PostController@index')->name('posts.index');
-Route::get('/posts/{slug}' , 'PostController@show')->name('posts.show');
+Route::get('/blog' , 'PostController@index')->name('posts.index');          // ! modidicato da posts a blog
+Route::get('/blog/{slug}' , 'PostController@show')->name('posts.show');     // ! modidicato da posts a blog
 
 Route::get('/categories' , 'CategoryController@index')->name('categories.index');
 Route::get('/categories/{slug}' , 'CategoryController@show')->name('categories.show');
@@ -38,5 +38,23 @@ Route::prefix('admin')
             'update'    => 'admin.posts.update' ,
             'edit'      => 'admin.posts.edit' ,
             'store'      => 'admin.posts.store' ,
+        ]);
+        Route::resource('/categories' , CategoryController::class)->names([
+            'index'     => 'admin.categories.index' ,
+            'create'    => 'admin.categories.create' ,
+            'destroy'   => 'admin.categories.destroy' ,
+            'show'      => 'admin.categories.show' ,
+            'update'    => 'admin.categories.update' ,
+            'edit'      => 'admin.categories.edit' ,
+            'store'      => 'admin.categories.store' ,
+        ]);
+        Route::resource('/tags' , TagController::class)->names([
+            'index'     => 'admin.tags.index' ,
+            'create'    => 'admin.tags.create' ,
+            'destroy'   => 'admin.tags.destroy' ,
+            'show'      => 'admin.tags.show' ,
+            'update'    => 'admin.tags.update' ,
+            'edit'      => 'admin.tags.edit' ,
+            'store'      => 'admin.tags.store' ,
         ]);
     });

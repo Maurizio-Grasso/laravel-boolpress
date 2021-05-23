@@ -1,0 +1,58 @@
+.col-md-200px {         // Sidebar Parent Col
+    flex-basis: 200px;
+}
+
+.admin-sidebar {
+    
+    background-color: $primary-color-back;
+    color: $color-white;
+    height: 100%;
+    padding-top: 2rem;
+    
+    &__nav {      
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }    
+    }
+    
+    &__menu-item {
+
+        padding: .5rem 1rem;
+        min-height: 2.5rem;
+        line-height: 2.5rem;
+        border-bottom: 1px solid rgba($color-white , .5);
+
+        transition: all .3s;
+
+        a {
+            &:link ,
+            &:active,
+            &:focus ,
+            &:visited ,
+            &:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+
+        i {
+            margin-right: 1rem;
+        }
+
+        &--comments {
+
+            span{
+                @include notification('7');
+            }
+        }
+
+        &:hover {
+            background-color: rgba($color-white , .2);
+        }
+
+    }
+
+}

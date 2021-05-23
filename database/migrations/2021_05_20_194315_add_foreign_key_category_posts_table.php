@@ -19,7 +19,9 @@ class AddForeignKeyCategoryPostsTable extends Migration
 
             $table->foreign('category_id')
             ->references('id')
-            ->on('categories');
+            ->on('categories')
+            ->nullable()
+            ->onDelete('set null'); // 'onDelete' gestisce il comportamento della foreign key nel caso venisse eliminato il relativo valore dalla tabella associata
         });
     }
 

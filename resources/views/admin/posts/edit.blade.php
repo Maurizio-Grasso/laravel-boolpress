@@ -1,15 +1,15 @@
-@extends('layouts.dashboard')
+@extends('layouts.dash_alt')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
+
             <div class="d-flex justify-content-between align-items-center">
-                <h1>Modifica post {{ $post->id }}</h1>
-                <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg> Tutti i posts
-                </a>
+                <h1>Modifica post {{ $post->id }}</h1>                
             </div>
+            
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -21,34 +21,50 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
+
+            <form class="custom-form" action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">                
                 @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label>Titolo</label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Inserisci il titolo" value="{{ old('title', $post->title) }}" required>
+
+                {{-- Edit Title --}}
+                <div class="custom-form__form-group">
+                    <label for="input-title" class="custom-form__label">Titolo</label>
+                    <input id="input-title" type="text" name="title" class="custom-form__input @error('title') is-invalid @enderror" placeholder="Inserisci il titolo" value="{{ old('title', $post->title) }}" required>
                     @error('title')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                
-                <div class="form-group">
-                    <label>Contenuto</label>
-                    <textarea name="content" class="form-control @error('content') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('content', $post->content) }}</textarea>
+                {{-- Edit Featured Image --}}
+
+                <div class="custom-form__form-group">
+                <label for="input-featured_img" class="custom-form__label">Immagine di Copertina</label>
+                <input id="input-featured_img" type="text" name="featured_img" class="custom-form__input @error('featured_img') is-invalid @enderror" placeholder="URL immagine di copertina" value="{{ old('featured_img' , $post->featured_img) }}">
+                @error('title')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                </div>
+
+                {{-- Edit Content --}}
+                <div class="custom-form__form-group custom-form__form-group--large">
+                    <label for="textarea-content" class="custom-form__label">Contenuto</label>
+                    <textarea id="textarea-content" name="content" class="custom-form__input @error('content') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('content', $post->content) }}</textarea>
                     @error('content')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <p>Seleziona i tag:</p>
+                {{-- Edit Tags --}}
+                <div class="custom-form__form-group custom-form__form-group--checkboxes">
+                    <h4>Seleziona i tag:</h4>
+
                     @foreach ($tags as $tag)
                         <div class="form-check @error('tags') is-invalid @enderror">
                             
-                            <input name="tags[]" class="form-check-input" type="checkbox" value="{{ $tag->id }}"
+                            <input name="tags[]" class="custom-form__checkbox" id="checkbox-{{ $tag->slug }}" type="checkbox" value="{{ $tag->id }}"
                             {{ $post->tags->contains($tag) ? 'checked=checked' : '' }}>
                             
-                            <label class="form-check-label">
+                            <label class="custom-form__checkbox-label" for="checkbox-{{ $tag->slug }}">
                                 {{ $tag->name }}
                             </label>
                             
@@ -58,13 +74,37 @@
                     @error('tags')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                </div>
+
+                {{-- Edit Category --}}
+                
+                <div class="custom-form__form-group">
+                    
+                    <label for="select-category" class="custom-form__label">Seleziona Categoria</label>
+                    
+                    <select id="select-category" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
+                        <option value="">-- seleziona categoria --</option>
+                        @foreach ($categories as $category)
+
+                            <option value="{{ $category->id }}" {{ old('category_id' , $post->category_id) == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+
+                        @endforeach
+                    </select>
+
+                    @error('category_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
 
                 </div>
 
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Salva post
+                {{-- Submit --}}
+
+                <div class="custom-form__form-group">
+                    <button type="submit" class="my-btn my-btn--medium my-btn--green">
+                        Aggiorna <i class="fas fa-arrow-right"></i>
+                       
                     </button>
                 </div>
             </form>

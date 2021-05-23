@@ -1,0 +1,12 @@
+.body--front {
+    background-color: rgb(231, 231, 231);
+    color: $color-text;
+    .page-content {
+        margin-bottom: .5rem;
+    }
+}
+
+.main--front {
+    height: 100%;
+    background-color: $color-white;
+}

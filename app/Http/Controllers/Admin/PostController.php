@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
 use App\Tag;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -32,8 +33,10 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
+        $categories = Category::all();
         $data = [
-            'tags' => $tags
+            'tags' => $tags ,
+            'categories' => $categories
         ];
         return view('admin.posts.create' , $data);
     }
@@ -97,10 +100,13 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::where('id' , $id)->first();
+        $categories = Category::all();
+
         
         $data = [
             'post' => $post ,
-            'tags' => Tag::all()
+            'tags' => Tag::all() ,
+            'categories' => $categories
         ];
         
         return view('admin.posts.edit' , $data);

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dash_alt')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{-- {{ __('You are logged in!') }} --}}
+                    {{ __('Ti sei Autenticato come ') }} <strong>{{Auth::user()->name}}</strong>
+                    <p>Usa il menu nella barra laterale sinistra per iniziare a scrivere contenuti</p>
                 </div>
             </div>
         </div>

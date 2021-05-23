@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dash_alt')
 
 @section('content')
 <div class="container">
