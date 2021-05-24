@@ -8,7 +8,7 @@
             <li class="admin-sidebar__menu-item admin-sidebar__menu-item--comments"><span><i class="fas fa-comment-alt"></i>Commenti</span></li>
             <li class="admin-sidebar__menu-item"><i class="fas fa-paint-brush"></i>Aspetto</li>
             <li class="admin-sidebar__menu-item"><i class="fas fa-plug"></i>Plug-in</li>
-            <li class="admin-sidebar__menu-item"><i class="fas fa-users"></i>Utenti</li>
+            <li class="admin-sidebar__menu-item"><i class="fas fa-users"></i><a href="{{route('admin.profile')}}">Utenti</a></li>
         </ul>
     </nav>
 </div>
